@@ -70,6 +70,8 @@ http://localhost:5173
 The backend API will run on:
 
 http://localhost:5000
+
+
 Notes
 
 If this is the first time running the project, Docker may take a few minutes to build the containers.
