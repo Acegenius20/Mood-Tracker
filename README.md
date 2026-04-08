@@ -1,6 +1,23 @@
 # MoodJournal - Daily Mood Tracker
 
-MoodJournal is a complete, production-style MERN stack app for daily mood logging, reflections, calendar history, and analytics.
+
+A full-stack web application designed to help users record and reflect on their emotional well-being on a daily basis.
+
+MoodJournal allows users to log how they feel each day using an intuitive emoji-based mood selection system. The goal of the project is to provide a simple and engaging way to build emotional awareness and maintain a daily record of moods and reflections over time.
+
+Users can choose from a set of predefined mood options represented by emojis, such as happy, neutral, sad, angry, and tired, and optionally add a short reflection note describing their thoughts, experiences, or reasons behind that mood for the day.
+
+The application maintains a date-wise history of all mood entries, presented in a calendar-style interface that makes it easy to view past records and identify emotional patterns across days, weeks, and months. Each date visually reflects the mood logged for that day, allowing users to quickly scan their emotional history.
+
+In addition to daily logging, the project includes a weekly mood summary dashboard that provides a clear overview of mood trends. This section displays the total count of each mood recorded during the week, helping users better understand recurring emotional patterns and overall mental state.
+
+A filtering system is included to allow users to browse mood entries based on specific mood types or selected date ranges, making the history easier to navigate.
+
+The application is built using the MERN stack, with React powering the frontend, Node.js and Express handling the backend services, and MongoDB used as the database. The database is managed through Docker containers to ensure a consistent and portable development environment.
+
+This project focuses on clean user interaction, meaningful data visualization, and an intuitive interface that encourages consistent daily use.
+
+
 
 ## Tech Stack
 
@@ -14,120 +31,50 @@ MoodJournal is a complete, production-style MERN stack app for daily mood loggin
 ## Core Features
 
 - Daily mood logging (happy, neutral, sad, angry, tired)
-- One entry per date (upsert behavior)
-- Optional reflection notes (500 char max) with live counter and localStorage draft
-- Calendar history with monthly navigation and color-coded mood tags
-- Dashboard analytics (weekly summary, charts, streak, 30-day trend)
+- Optional reflection notes with live counter 
+- Calendar history with monthly navigation and mood tags
+- Dashboard with detailed analytics 
 - Advanced filtering (mood, date range, week, month, note text)
-- Edit and delete entries
-- JSON and CSV export
-- Light/Dark/System theme with persistence
-- Toasts, loading and empty states, responsive layout, smooth animations
-- Custom 404 page
+- Data export
 
-## Project Structure
 
-```text
-Mood Tracker/
-  client/
-    src/
-      api/
-      components/
-      context/
-      pages/
-      utils/
-  server/
-    config/
-    controllers/
-    middleware/
-    models/
-    routes/
-    services/
-    utils/
-  docker-compose.yml
-```
+How to Run the Project
 
-## Environment Variables
+To run this project on your system, make sure the following software is installed:
 
-### Backend ([server/.env](server/.env))
-
-```env
-PORT=5000
-MONGO_URI=mongodb://mongodb:27017/moodjournal
-NODE_ENV=production
-```
-
-### Frontend ([client/.env](client/.env))
-
-```env
-VITE_API_URL=http://localhost:5000
-```
-
-## API Routes
-
-- POST /api/moods
-- GET /api/moods
-- GET /api/moods/:id
-- PUT /api/moods/:id
-- DELETE /api/moods/:id
-- GET /api/moods/filter
-- GET /api/moods/weekly-summary
-- GET /api/moods/calendar
-- GET /api/moods/dashboard
-
-## Docker Usage (Recommended)
-
-Run the complete app:
-
-```bash
+Node.js 
+Docker Desktop (for running MongoDB in a container)
+Installation Steps:
+Install frontend dependencies
+npm install
+Install backend dependencies
+cd ../server
+npm install
+Start Docker
+Make sure Docker Desktop is running on your machine.
+Run the project using Docker Compose
+From the root project folder:
 docker-compose up --build
-```
 
-Services:
+This will start:
 
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
-- MongoDB: mongodb://localhost:27017
+MongoDB container
+Backend server
+Frontend application
+Open the application
+Once everything starts successfully, open:
+http://localhost:5173
 
-Database persistence uses a named volume: `mongo_data`
+(or the frontend port configured in the project)
 
-Stop services:
+The backend API will run on:
 
-```bash
-docker-compose down
-```
+http://localhost:5000
+Notes
 
-Stop and remove DB volume:
+If this is the first time running the project, Docker may take a few minutes to build the containers.
 
-```bash
-docker-compose down -v
-```
+Make sure the required ports (such as 5000, 5173, and 27017) are not already in use.
 
-## Local (Non-Docker) Setup
 
-### Backend
 
-```bash
-cd server
-npm install
-npm run dev
-```
-
-### Frontend
-
-```bash
-cd client
-npm install
-npm run dev
-```
-
-## GitHub Push Commands
-
-```bash
-git init
-git add .
-git commit -m "Initial commit - Dockerized MoodJournal MERN app"
-git branch -M main
-git remote add origin <MY_GITHUB_REPO_URL>
-git push -u origin main
-```
