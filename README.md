@@ -72,11 +72,12 @@ The backend API will run on:
 http://localhost:5000
 
 
-Notes
 
+Note:
 If this is the first time running the project, Docker may take a few minutes to build the containers.
 
 Make sure the required ports (such as 5000, 5173, and 27017) are not already in use.
+
 
 
 
